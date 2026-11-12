@@ -168,15 +168,13 @@ export const UnderwriterDashboard: React.FC<UnderwriterDashboardProps> = ({
       {activeSubTab === 'QUEUE_360' && selectedApp && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Column: Application Queue List (4 cols) */}
-          <div className="lg:col-span-4 min-w-0 bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div className="lg:col-span-4 bg-white border border-slate-200 rounded-xl overflow-hidden">
             <div className="p-4 border-b border-slate-200 space-y-3">
-              <div className="flex items-center justify-between gap-2">
-                <h2 className="text-sm xl:text-base font-semibold text-slate-900 whitespace-nowrap">
+              <div className="flex items-center justify-between">
+                <h2 className="text-base font-semibold text-slate-900">
                   Underwriting Queue ({filteredQueue.length})
                 </h2>
-                <span className="text-[11px] font-mono text-slate-500 whitespace-nowrap shrink-0">
-                  By Urgency
-                </span>
+                <span className="text-xs font-mono text-slate-500">Sorted by Urgency</span>
               </div>
 
               {/* Filter Tabs */}
@@ -210,16 +208,12 @@ export const UnderwriterDashboard: React.FC<UnderwriterDashboardProps> = ({
                       isSelected ? 'bg-slate-900 text-white' : 'hover:bg-slate-50 text-slate-900'
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-2 text-xs font-mono mb-1">
-                      <span
-                        className={`truncate ${
-                          isSelected ? 'text-slate-300' : 'text-slate-500'
-                        }`}
-                      >
+                    <div className="flex items-center justify-between text-xs font-mono mb-1">
+                      <span className={isSelected ? 'text-slate-300' : 'text-slate-500'}>
                         {app.id} · {app.city}
                       </span>
                       <span
-                        className={`font-semibold shrink-0 ${
+                        className={`font-semibold ${
                           app.result.outcome === 'APPROVED'
                             ? isSelected
                               ? 'text-emerald-400'
@@ -245,7 +239,7 @@ export const UnderwriterDashboard: React.FC<UnderwriterDashboardProps> = ({
                     </div>
 
                     <div
-                      className={`flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] font-mono tabular-nums mt-1.5 ${
+                      className={`flex items-center gap-2 text-[11px] font-mono tabular-nums mt-1.5 ${
                         isSelected ? 'text-slate-300' : 'text-slate-500'
                       }`}
                     >
@@ -264,13 +258,13 @@ export const UnderwriterDashboard: React.FC<UnderwriterDashboardProps> = ({
           </div>
 
           {/* Right Column: 360° Application Detail, Decision Tree & SHAP Waterfall (8 cols) */}
-          <div className="lg:col-span-8 min-w-0 space-y-6">
+          <div className="lg:col-span-8 space-y-6">
             {/* Applicant 360° Header Card */}
             <div className="p-6 bg-white border border-slate-200 rounded-xl space-y-5">
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-slate-200">
-                <div className="min-w-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                <div>
                   <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 font-mono">
-                    <span className="truncate max-w-[240px]">{selectedApp.id}</span>
+                    <span>{selectedApp.id}</span>
                     <span aria-hidden="true">·</span>
                     <span>PAN: {selectedApp.pan}</span>
                     <span aria-hidden="true">·</span>
@@ -278,10 +272,10 @@ export const UnderwriterDashboard: React.FC<UnderwriterDashboardProps> = ({
                     <span aria-hidden="true">·</span>
                     <span>Submitted {selectedApp.submittedAt}</span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-1 text-balance">
+                  <h2 className="text-2xl font-bold text-slate-900 mt-1">
                     {selectedApp.applicantName} — 360° Credit Appraisal Dossier
                   </h2>
-                  <p className="text-sm text-slate-600 mt-0.5">
+                  <p className="text-sm text-slate-600">
                     {selectedApp.employmentType === 'SALARIED' ? 'Salaried' : 'Self-Employed'} at{' '}
                     <strong className="text-slate-900">{selectedApp.employerOrBusinessName}</strong> ({selectedApp.employmentYears} yrs vintage) · Age {selectedApp.age} yrs
                   </p>
@@ -290,7 +284,7 @@ export const UnderwriterDashboard: React.FC<UnderwriterDashboardProps> = ({
                 <div className="text-left sm:text-right font-mono shrink-0">
                   <span className="text-xs text-slate-500 block">Current Status</span>
                   <span
-                    className={`text-lg font-bold inline-flex items-center gap-1.5 whitespace-nowrap ${
+                    className={`text-lg font-bold inline-flex items-center gap-1.5 ${
                       selectedApp.result.outcome === 'APPROVED'
                         ? 'text-emerald-700'
                         : selectedApp.result.outcome === 'REFERRED'
@@ -308,41 +302,41 @@ export const UnderwriterDashboard: React.FC<UnderwriterDashboardProps> = ({
                 </div>
               </div>
 
-              {/* 6-Metric Financial Summary Grid (3x2 on desktop for full label legibility) */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+              {/* 6-Metric Financial Summary Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="text-slate-500 block">Loan Requested</span>
-                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5 whitespace-nowrap">
+                  <span className="text-slate-500">Loan Requested</span>
+                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5">
                     {formatINR(selectedApp.requestedLoanAmount)}
                   </p>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="text-slate-500 block">Property Value</span>
-                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5 whitespace-nowrap">
+                  <span className="text-slate-500">Property Value</span>
+                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5">
                     {formatINR(selectedApp.propertyValue)}
                   </p>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="text-slate-500 block">Net Monthly Income</span>
-                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5 whitespace-nowrap">
+                  <span className="text-slate-500">Net Monthly Income</span>
+                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5">
                     {formatINR(selectedApp.netMonthlyIncome)}
                   </p>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="text-slate-500 block">Total FOIR Burden</span>
-                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5 whitespace-nowrap">
+                  <span className="text-slate-500">Total FOIR Burden</span>
+                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5">
                     {selectedApp.result.foirPercent}%
                   </p>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="text-slate-500 block">Collateral LTV</span>
-                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5 whitespace-nowrap">
+                  <span className="text-slate-500">Collateral LTV</span>
+                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5">
                     {selectedApp.result.ltvPercent}%
                   </p>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="text-slate-500 block">CIBIL & Bounces</span>
-                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5 whitespace-nowrap">
+                  <span className="text-slate-500">CIBIL & Bounces</span>
+                  <p className="font-mono tabular-nums font-bold text-slate-900 text-sm mt-0.5">
                     {selectedApp.cibilScore} · {selectedApp.bounceCountLast12M} bnc
                   </p>
                 </div>
