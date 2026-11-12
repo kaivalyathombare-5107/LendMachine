@@ -157,118 +157,120 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-slate-50 text-slate-900">
       {/* Strict 3-Zone Top Bar Contract */}
-      <header className="flex items-center justify-between gap-8 px-6 py-4 bg-white border-b border-slate-200 sticky top-0 z-30">
-        {/* Zone 1: Single text element wordmark */}
-        <a
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            setPrimaryView('APPLICANT');
-          }}
-          className="text-lg font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 font-display"
-        >
-          Hero FinCorp UnderwriteAI
-        </a>
-
-        {/* Zone 2: 5 concise single-line text navigation links */}
-        <nav
-          aria-label="Primary Navigation"
-          className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600"
-        >
+      <header className="w-full bg-white border-b border-slate-200 sticky top-0 z-30">
+        <div className="max-w-7xl w-full mx-auto flex items-center justify-between gap-3 xl:gap-6 px-4 sm:px-6 py-3.5">
+          {/* Zone 1: Single text element wordmark */}
           <a
-            href="#applicant-portal"
+            href="#top"
             onClick={(e) => {
               e.preventDefault();
               setPrimaryView('APPLICANT');
             }}
-            className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
-              primaryView === 'APPLICANT'
-                ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
-                : ''
-            }`}
+            className="text-base xl:text-lg font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 font-display"
           >
-            Applicant Portal
+            Hero FinCorp UnderwriteAI
           </a>
-          <a
-            href="#underwriter-queue"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateToUnderwriterTab('QUEUE_360');
-            }}
-            className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
-              primaryView === 'UNDERWRITER' && underwriterTab === 'QUEUE_360'
-                ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
-                : ''
-            }`}
-          >
-            Underwriter Queue
-          </a>
-          <a
-            href="#compliance-audit"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateToUnderwriterTab('COMPLIANCE_AUDIT');
-            }}
-            className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
-              primaryView === 'UNDERWRITER' && underwriterTab === 'COMPLIANCE_AUDIT'
-                ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
-                : ''
-            }`}
-          >
-            Compliance Audit
-          </a>
-          <a
-            href="#fairness-monitor"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateToUnderwriterTab('FAIRNESS_MONITOR');
-            }}
-            className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
-              primaryView === 'UNDERWRITER' && underwriterTab === 'FAIRNESS_MONITOR'
-                ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
-                : ''
-            }`}
-          >
-            Fairness Monitor
-          </a>
-          <a
-            href="#rule-governance"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateToUnderwriterTab('RULE_GOVERNANCE');
-            }}
-            className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
-              primaryView === 'UNDERWRITER' && underwriterTab === 'RULE_GOVERNANCE'
-                ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
-                : ''
-            }`}
-          >
-            Rule Governance
-          </a>
-        </nav>
 
-        {/* Zone 3: 1 primary action */}
-        <div className="flex items-center gap-3 shrink-0">
-          <button
-            type="button"
-            onClick={() =>
-              setPrimaryView((prev) =>
-                prev === 'APPLICANT' ? 'UNDERWRITER' : 'APPLICANT'
-              )
-            }
-            className="px-4 py-2 text-xs font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+          {/* Zone 2: 5 concise single-line text navigation links */}
+          <nav
+            aria-label="Primary Navigation"
+            className="hidden md:flex items-center gap-3 xl:gap-6 text-xs xl:text-sm font-medium text-slate-600 min-w-0"
           >
-            {primaryView === 'APPLICANT'
-              ? 'Open Underwriter Console'
-              : 'Open Applicant Portal'}
-          </button>
+            <a
+              href="#applicant-portal"
+              onClick={(e) => {
+                e.preventDefault();
+                setPrimaryView('APPLICANT');
+              }}
+              className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
+                primaryView === 'APPLICANT'
+                  ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
+                  : ''
+              }`}
+            >
+              Applicant Portal
+            </a>
+            <a
+              href="#underwriter-queue"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateToUnderwriterTab('QUEUE_360');
+              }}
+              className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
+                primaryView === 'UNDERWRITER' && underwriterTab === 'QUEUE_360'
+                  ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
+                  : ''
+              }`}
+            >
+              Underwriter Queue
+            </a>
+            <a
+              href="#compliance-audit"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateToUnderwriterTab('COMPLIANCE_AUDIT');
+              }}
+              className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
+                primaryView === 'UNDERWRITER' && underwriterTab === 'COMPLIANCE_AUDIT'
+                  ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
+                  : ''
+              }`}
+            >
+              Compliance Audit
+            </a>
+            <a
+              href="#fairness-monitor"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateToUnderwriterTab('FAIRNESS_MONITOR');
+              }}
+              className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
+                primaryView === 'UNDERWRITER' && underwriterTab === 'FAIRNESS_MONITOR'
+                  ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
+                  : ''
+              }`}
+            >
+              Fairness Monitor
+            </a>
+            <a
+              href="#rule-governance"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateToUnderwriterTab('RULE_GOVERNANCE');
+              }}
+              className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 py-1 ${
+                primaryView === 'UNDERWRITER' && underwriterTab === 'RULE_GOVERNANCE'
+                  ? 'text-slate-900 border-b-2 border-slate-900 font-semibold'
+                  : ''
+              }`}
+            >
+              Rule Governance
+            </a>
+          </nav>
+
+          {/* Zone 3: 1 primary action */}
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() =>
+                setPrimaryView((prev) =>
+                  prev === 'APPLICANT' ? 'UNDERWRITER' : 'APPLICANT'
+                )
+              }
+              className="px-3.5 py-2 text-xs font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            >
+              {primaryView === 'APPLICANT'
+                ? 'Open Underwriter Console'
+                : 'Open Applicant Portal'}
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Main Content Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
         {primaryView === 'APPLICANT' ? (
           <ApplicantPortal
             activePolicy={activePolicy}
@@ -295,13 +297,13 @@ export default function App() {
       </main>
 
       {/* Quiet Regulatory Footer */}
-      <footer className="border-t border-slate-200 bg-white py-5 px-6 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <footer className="border-t border-slate-200 bg-white py-4 px-4 sm:px-6 text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-2">
           <span>
             Hero Housing Finance Digital Underwriting Engine · RBI Fair Practices Code & Account Aggregator Compliant
           </span>
-          <span className="font-mono whitespace-nowrap">
-            Dual-Transparency Architecture · Reason Codes · SHAP Waterfall · Tamper-Evident Audit
+          <span className="font-mono text-slate-500">
+            Dual-Transparency · Reason Codes · SHAP Waterfall · Tamper-Evident Audit
           </span>
         </div>
       </footer>

@@ -184,19 +184,19 @@ export const ApplicantPortal: React.FC<ApplicantPortalProps> = ({
       {/* Top Scenario Quick-Loader & Progress Stepper Bar */}
       <div className="p-5 bg-white border border-slate-200 rounded-xl space-y-5">
         <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-200">
-          <div className="shrink-0">
-            <div className="flex items-center gap-2 text-xs text-slate-500 whitespace-nowrap">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
               <span>Self-Serve Digital Mortgage Onboarding</span>
               <span aria-hidden="true">·</span>
               <span className="font-mono">Active Engine Policy: {activePolicy.version}</span>
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1 whitespace-nowrap">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 mt-1">
               Applicant Self-Serve Underwriting Portal
             </h1>
           </div>
 
           {/* Interactive Scenario Presets */}
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-medium text-slate-500 mr-1 whitespace-nowrap">
               Demo Scenarios:
             </span>
