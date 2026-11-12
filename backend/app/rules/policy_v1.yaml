@@ -1,0 +1,44 @@
+version: "policy-2026.1"
+effective_date: "2026-01-01"
+
+common:
+  min_cibil_score: 650
+  max_foir: 0.55          # Fixed Obligation to Income Ratio cap
+  min_age: 21
+  max_age_at_maturity: 65
+
+HOME_LOAN:
+  max_ltv: 0.80           # Loan-to-Value cap
+  min_loan_amount: 100000
+  max_loan_amount: 50000000
+  max_tenure_months: 360
+
+LAP:
+  max_ltv: 0.60
+  min_loan_amount: 200000
+  max_loan_amount: 100000000
+  max_tenure_months: 180
+
+hard_rejects:
+  - code: "CIBIL_BELOW_MIN"
+    description: "Credit bureau score below minimum acceptable threshold"
+  - code: "FOIR_EXCEEDED"
+    description: "Fixed obligation to income ratio exceeds policy cap"
+  - code: "LTV_EXCEEDED"
+    description: "Requested loan amount exceeds max loan-to-value for product"
+  - code: "SANCTIONS_HIT"
+    description: "Applicant matched on sanctions/PEP screening list"
+  - code: "DOCUMENT_FORGERY_SUSPECTED"
+    description: "Document authenticity check failed below acceptable confidence"
+  - code: "LOAN_AMOUNT_OUT_OF_RANGE"
+    description: "Requested loan amount outside product's configured min/max band"
+
+refer_triggers:
+  - code: "LOW_MODEL_CONFIDENCE"
+    description: "Risk model confidence interval too wide for straight-through decisioning"
+  - code: "BORDERLINE_FOIR"
+    description: "FOIR within 5 percentage points of the cap"
+  - code: "INCOME_MISMATCH"
+    description: "Stated income deviates significantly from bank-deposit-derived income"
+  - code: "VELOCITY_FLAG"
+    description: "Multiple applications detected in a short time window"
