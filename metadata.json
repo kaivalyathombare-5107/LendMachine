@@ -1,0 +1,6 @@
+{
+  "name": "Hero FinCorp UnderwriteAI — Automated Mortgage Underwriting Engine",
+  "description": "Dual-transparency mortgage underwriting platform with Applicant Self-Serve Portal, Inline OCR Confirmation, Real-Time Decision Pipeline, SHAP Waterfall Explainability, Tamper-Evident Audit Logs, and Bias/Fairness Governance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
